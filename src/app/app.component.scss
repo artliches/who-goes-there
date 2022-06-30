@@ -1,28 +1,32 @@
 $gold: #daa520;
 $magenta: rgb(255,0,128);
+$border-color: grey;
+
 
 strong {
     cursor: pointer;
     user-select: none;
-    background-color: cyan;
-    color: rgb(51, 32, 42);
+    background-color: black;
+    color: white;
     padding: 0rem 0.1rem 0rem 0.1rem;
+    border: 1px solid black;
 
     &:hover {
-        background-color: black;
-        color: $magenta
+        background-color: white;
+        color: black;
+        border: 1px solid grey;
     }
 }
 
 h1 {
     place-self: center;
     margin-bottom: 0rem;
-    color: $magenta
+    color: black
 }
 
 em {
     font-size: .8rem;
-    color: $magenta;
+    color: grey;
 }
 
 .npc-gen-grid {
@@ -31,12 +35,35 @@ em {
     grid-gap: 1rem;
 
     div {
-        border-top: 1px solid $gold;
+        border-top: 1px solid $border-color;
         padding-top: 1rem;
+    }
+
+    .link {
+        place-self: center;
+        position: absolute;
+        bottom: 0;
+        a {
+            color: white;
+            &:hover {
+                color: black;
+            }
+        }
     }
 }
 
 .center {
     display: grid;
     place-self: center;
+
+    &.reroll {
+        font-size: .9rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .npc-gen-grid {
+        max-width: 53%;
+        margin: auto;
+    }
 }

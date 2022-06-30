@@ -73,6 +73,10 @@ export class AppComponent implements OnInit {
   ) {};
 
   ngOnInit(): void {
+    this.rollAll();
+  }
+
+  rollAll() {
     this.reRollName();
     this.reRollPronouns();
     this.reRollSpecies();

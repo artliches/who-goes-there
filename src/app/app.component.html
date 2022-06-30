@@ -3,6 +3,10 @@
         <h1>WHO GOES THERE?</h1>
         <em><span class="rotate-arrow">&#8626;</span>randomized prompts for creating NPCS for swords & sworcery games</em>
     </span>
+    <span class="center">
+        <strong class="center reroll" (click)="rollAll()">someone new approaches</strong>
+        <em><span class="rotate-arrow">&#8626;</span>click to re-roll</em>
+    </span>
     
     <div>
         You encounter <strong (click)="reRollName()">{{nameObj.name}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
@@ -22,4 +26,6 @@
     <div>
         Their most distinguishing feature is <strong (click)="reRollDistinguishingFeature()">{{distinguishingFeatureObj.name}}</strong>.
     </div>
+
+    <em class="link">WHO GOES THERE? is created by <strong><a href='https://twitter.com/codeLiches' target="_blank">@codeLiches</a></strong></em>
 </span>
