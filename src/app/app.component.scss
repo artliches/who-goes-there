@@ -1,0 +1,42 @@
+$gold: #daa520;
+$magenta: rgb(255,0,128);
+
+strong {
+    cursor: pointer;
+    user-select: none;
+    background-color: cyan;
+    color: rgb(51, 32, 42);
+    padding: 0rem 0.1rem 0rem 0.1rem;
+
+    &:hover {
+        background-color: black;
+        color: $magenta
+    }
+}
+
+h1 {
+    place-self: center;
+    margin-bottom: 0rem;
+    color: $magenta
+}
+
+em {
+    font-size: .8rem;
+    color: $magenta;
+}
+
+.npc-gen-grid {
+    display: grid;
+    place-content: center;
+    grid-gap: 1rem;
+
+    div {
+        border-top: 1px solid $gold;
+        padding-top: 1rem;
+    }
+}
+
+.center {
+    display: grid;
+    place-self: center;
+}

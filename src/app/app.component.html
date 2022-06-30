@@ -1,1 +1,25 @@
-NPC GENERATOR
+<span class="npc-gen-grid">
+    <span class="center">
+        <h1>WHO GOES THERE?</h1>
+        <em><span class="rotate-arrow">&#8626;</span>randomized prompts for creating NPCS for swords & sworcery games</em>
+    </span>
+    
+    <div>
+        You encounter <strong (click)="reRollName()">{{nameObj.name}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
+    </div>
+    <div>
+        {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'are' : 'is'}} {{speciesStartsWithVowel ? 'an' : 'a'}} <strong (click)="reRollSpecies()">{{speciesObj.species.name}}</strong> with <strong (click)="reRollSkinTone()">{{this.skinObj.skin}}</strong> {{skinAdjective}} and a <strong (click)="reRollBuild()">{{buildObj.build}}</strong> build.
+        <span *ngIf="hairObj.hairLength !== 'bald'; else baldSection">
+            Their <strong (click)="reRollHairColor()">{{hairObj.hairColor}}</strong> hair is <strong (click)="reRollHairType()">{{hairObj.hairType}}</strong> and <strong (click)="reRollHairLength()">{{hairObj.hairLength}}</strong>.
+        </span>
+        <ng-template #baldSection>
+            <strong (click)="reRollHairLength()">They are completely bald.</strong>
+        </ng-template>
+        <span>
+            {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'have' : 'has'}} <strong (click)="reRollEyeColor()">{{eyeColorObj.color}}</strong> eyes.
+        </span>
+    </div>
+    <div>
+        Their most distinguishing feature is <strong (click)="reRollDistinguishingFeature()">{{distinguishingFeatureObj.name}}</strong>.
+    </div>
+</span>

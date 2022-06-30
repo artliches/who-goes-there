@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Roboto Mono";
+    src: local("Roboto Mono"), url(./assets/fonts/RobotoMono-VariableFont_wght.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+body {
+    background-color: rgb(51, 32, 42);
+    color: #daa520;
+    font-family: "Roboto Mono", sans-serif;
+}
+
+.rotate-arrow {
+    writing-mode: vertical-lr;
+}
