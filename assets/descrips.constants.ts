@@ -89,6 +89,16 @@ export const NAMES = [
     'Sined',
     'Karsus',
     'Albedo',
+    'Astarot',
+    'Zola',
+    'Kaiman',
+    'Noi',
+    'Shin',
+    'Sybil',
+    'Errol',
+    'Iris',
+    'Pyrite',
+    'Rorick the Second'
 ];
 
 export const MAIN_PRONOUN = [
@@ -113,30 +123,37 @@ export const SPECIES = [
     {
         name: 'Spring Eladrin',
         outsider: true,
+        spring: true
     },
     {
         name: 'Summer Eladrin',
         outsider: true,
+        summer: true,
     },
     {
         name: 'Autumn Eladrin',
         outsider: true,
+        autumn: true,
     },
     {
         name: 'Winter Eladrin',
         outsider: true,
+        winter: true,
     },
     {
         name: 'Tabaxi',
         fur: true,
+        cat: true,
     },
     {
         name: 'Tiefling',
         outsider: true,
+        infernal: true,
     },
     {
         name: 'Aasimar',
         outsider: true,
+        divine: true,
     },
     {
         name: 'Sun Elf',
@@ -150,33 +167,42 @@ export const SPECIES = [
     {
         name: 'Cambion',
         outsider: true,
+        infernal: true,
     },
     {
         name: 'Serpentfolk',
         outsider: true,
+        snake: true,
     },
     {
         name: 'Dragonborn',
         outsider: true,
+        dragon: true,
     },
     {
         name: 'Lizardfolk',
         outsider: true,
+        lizard: true,
     },
     {
         name: 'Hexblood',
+        hexblood: true,
     },
     {
         name: 'Fire Genasi',
+        fire: true,
     },
     {
         name: 'Water Genasi',
+        water: true,
     },
     {
         name: 'Air Genasi',
+        air: true,
     },
     {
         name: 'Earth Genasi',
+        earth: true,
     },
     {
         name: 'Triton',
@@ -269,7 +295,8 @@ export const SKIN_OUTSIDER = [
     'sea blue',
     'violet',
     'vibrant magenta',
-    'teal'
+    'teal',
+    'pearlescent'
 ];
 
 export const SKIN_WOOD = [
@@ -351,7 +378,7 @@ export const HAIR_COLOR = [
     'raven black',
     'mousey brown',
     'firey red',
-    'drity blonde',
+    'dirty blonde',
     'platinum blonde',
     'silvery gray',
     'salt & pepper',
@@ -372,7 +399,7 @@ export const EYE_COLORS = [
 ];
 
 export const DISTINGUISHING_FEATURES = [
-    'that they\'re covered in old scars',
+    'that they are covered in old scars',
     'their missing eye',
     'their missing hand',
     'their missing leg',
@@ -384,7 +411,7 @@ export const DISTINGUISHING_FEATURES = [
     'their vitiligo',
     'their colorful tattoos',
     'their monochromatic tattoos',
-    'that they\'re coated in freckles',
+    'that they are coated in freckles',
     'their hetrochroma',
     'their dyed hair',
     'their obvious piercings',
@@ -393,7 +420,7 @@ export const DISTINGUISHING_FEATURES = [
     'their distinguished mole',
     'their mouth full of sharp teeth',
     'their split tounge',
-    'that they\'re bedecked in jewelery',
+    'that they are bedecked in jewelery',
     'their immaculately painted nails',
     'their confident strut in stiletto heels',
     'their intricate makeup',
@@ -404,6 +431,212 @@ export const DISTINGUISHING_FEATURES = [
     'their slitted eyebrows',
     'their intricate hair-do',
     'their ink-stained fingers',
-    'the flowy clothes they wear',
-    'the form fitting clothes they wear'
+    'their flowy clothes',
+    'their form fitting clothes',
+    'their iridescent skin',
+    'that they are actually a Changling in disguise',
+    'that they are actually a dragon observing humanoids in secret',
+    'their gorgeous body paint'
+];
+
+export const SPRING_DESCRIP = [
+    'fuzzy moth antenna',
+    'a smooth, segmented, chitonous exoskeleton',
+    'compound irises that shimmer like oil on water',
+    'vibrant butterfly wings',
+    'pastel, chitonous arms and legs, like armor',
+    'scaled, moth-like wings',
+    'a smaller, extra set of eyes'
+];
+
+export const SUMMER_DESCRIP = [
+    'a lion-like tail',
+    'tufts of fur along the elbows and ankles',
+    'sharp, predator-like pupils',
+    'fuzzy, elfish ears',
+    'retractable claws',
+    'fuzzy, digigrade legs, complete with claws',
+    'sabertooth canines'
+];
+
+export const AUTUMN_DESCRIP = [
+    'keen, raptor-like eyes',
+    'feathered forarms that end in curved talons',
+    'enormous feathered wings',
+    'expressive, feathered tufts above their brows',
+    'the ability to turn their head 270 degrees',
+    'powerful legs that end in talons',
+];
+
+export const WINTER_DESCRIP = [
+    'a spiked, segmented, chitonous exoskeleton',
+    'springy, digigrade insect legs',
+    'small, vibrant spines along the arms, legs, and back',
+    'translucent insect wings contained within shimmering elytra',
+    'a blood red hourglass symbol along the back',
+    'an extra set of chitinous scything arms',
+    'a smaller, extra set of eyes',
+    'dark, chitious legs like thigh-high boots',
+];
+
+export const INFERNAL_DESCRIP = [
+    'enormous, leathery wings folded neatly upon their back',
+    'a set of straight horns, pointing to the heavens',
+    'a set of curled horns, like a ram',
+    'a set of wavy horns, like an impala',
+    'ten horns sprouting like a bony crown',
+    'a whip-like tail, ending in a heart-shaped spade',
+    'furry digigrade legs ending in cloven hooves',
+    'an extra digit upon each hand',
+    'a radiating heat like furnace',
+    'a radiating chill like a blizzard',
+    'goat-like pupils',
+    'a single horn, like an oni',
+    'a short, stubby tail that end in a spear-like point',
+    'a long, whip-like tail ending in a tuft of fur',
+    'a gaping hole in their chest',
+    'they remind you of the person you find most comforting'
+];
+
+export const DIVINE_DESCRIP = [
+    'golden rings spinning lazily around their head',
+    'a resonating, booming voice',
+    'seven, feathered wings',
+    'wings sprouting from their temples that cover their eyes',
+    'a soft, radiating light',
+    'feathers sproating from their hair',
+    'eyes along their arms',
+    'glinting celestial script carved along their body',
+    'limbs that glow at the tips',
+    'small, cherubic wings',
+    'a lion\'s face',
+    'a blinding light that obscures their facial features',
+    'a choral voice',
+    'gold flake embedded within their skin',
+    'a halo of golden flame behind their head',
+    'a halo made of a metal so thin it lacerates any who dares grasp it',
+    'two grisly scars along their back',
+    'dark, burned fingers and feet',
+    'a pitch black halo that absorbs the light'
+];
+
+export const LIZARD_DESCRIP = [
+    'powerful, snapping jaws',
+    'padded hands and feet that allow them to climb any surface',
+    'tough spikes all along their body',
+    'a trustworthy, bearded face',
+    'smooth, sharp face',
+    'eyes that can move independently',
+    'scales that can change color to blend into the environment',
+    'a frill along their neck that opens and closes like an umbrella',
+    'sharp, tough claws',
+    'a thick tail',
+    'a detachable tail that regrows in 3-5 days',
+    'a long, sticky tongue',
+    'a sharp, blue tounge'
+];
+
+export const SNAKE_DESCRIP = [
+    'a puppy-like boa face',
+    'folding, viper-like fangs',
+    'a retractable hood with false eyes along the front and back',
+    'an upturned hog nose',
+    'a piebald scale pattern',
+    'a tail that splits into two ends',
+    'a tendency to ball up when comfortable',
+    'gives the best hugs'
+];
+
+export const DRAGON_DESCRIP = [
+    'a piebald scale pattern',
+    'crystals sprouting from their head and neck like a mane',
+    'tough spikes all along their body',
+    'a trustworthy, bearded face',
+    'enormous, leathery wings folded neatly upon their back',
+    'a set of straight horns, pointing to the heavens',
+    'a set of curled horns, like a ram',
+    'a set of wavy horns, like an impala',
+    'powerful snapping jaws and a tough shell',
+    'sunken, smoldering eyes set beneath a deep, bony brow',
+    'an extra head, complete with its own neck'
+];
+
+export const HEXBLOOD_DESCRIP = [
+    'a laurel made of different stones that orbits their head',
+    'a laural made of a blade so thin it lacerates any who dares grab it',
+    'a laural made of water with small, silvery fish within it',
+    'a laural made of strips of paper from long lost stories',
+    'a laural made of brass and silver gears',
+    'a laural made of flames that reveal your past if you gaze too long',
+    'a laural made of ice that reflects nothing',
+    'a laural made of mist that shifts with their emotions',
+    'a laural made of golden leaves that glow with a warm light',
+    'a laural made of starlight and utter blackness',
+    'a laural made of ink of stories yet to be penned',
+    'a laural made of leaves that shift with the seasons',
+    'a laural made of antlers that curl protectively around their head',
+    'a laural made of soft rainbow light',
+    'a laural made of kelp',
+    'a laural made of a slumbering, two-headed serpent',
+    'a laural made of bones bound together with red ribbons',
+    'a laural made of soft, fluttering feathers'
+];
+
+export const CAT_DESCRIP = [
+    'an extra digit on each of their paws',
+    'a huge, fluffy tail',
+    'tufts atop their ears',
+    'a tail that splits into two ends',
+    'sabertooth fangs',
+    'a cotton candy pink nose',
+    'a distinguished, flat face',
+    'long, well-groomed whiskers',
+    'they look in two different directions',
+    'a stubby, rabbit-like tail',
+    'huge handpaws',
+    'rounded, lion-like ears',
+    'a thick, whip-like tail with a tuft on the end',
+    'an underbite',
+    'a notch in their ear',
+];
+
+export const FIRE_DESCRIP = [
+    'glows with a warm, inner flame',
+    'sparks fly from their mouth whenever they laugh',
+    'their voice pops and crackles like a fireplace',
+    'they leave smoldering footprints whereever they tread',
+    'their tongue is made of an electric blue flame',
+    'their "hair" is actually a well-controlled flame that took years to master'
+];
+
+export const WATER_DESCRIP = [
+    'the shadows of fish can be seen swimming beneath their skin',
+    'their skin color shifts like light over an ocean',
+    'their hair has a tendency to roll like a storm-stricken ocean',
+    'their forearms are frozen and carved to appear as icy gauntlets',
+    'they can shift their features as easily as water flows around a stone',
+    'their "hair" is actually water that shifts with their emotions',
+    'their voice booms like a crashing wave'
+];
+
+export const AIR_DESCRIP = [
+    'their voice booms like thunder',
+    'they smell like ozone',
+    'a fresh breeze seems to constantly surround them',
+    'electricty crackles between their teeth whenever they laugh',
+    'their skin is slighly transluscent',
+    'their hair is constantly wind-swept and waving in a non-existent breeze',
+    'they seem to float slightly when they move',
+    'their voice sounds like bird song',
+    'birds tend to congregate near them'
+];
+
+export const EARTH_DESCRIP = [
+    'their voice is deep and echos',
+    'precious stones embedded in their skin',
+    'runic carvings along their arms',
+    'a scar that shimmers like a geode',
+    'crystals sprouting along their shoulders and back',
+    'the inside of their mouth glitters like treasure whenever they laughs',
+    'their hair splits light like a prism'
 ];
