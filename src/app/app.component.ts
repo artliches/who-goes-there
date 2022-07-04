@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BUILD, DISTINGUISHING_FEATURES, EYE_COLORS, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, MAIN_PRONOUN, NAMES, SECONDARY_PRONOUN, SKIN_FEATHERS, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SPECIES } from 'src/assets/descrips.constants';
+import { AIR_DESCRIP, AUTUMN_DESCRIP, BUILD, CAT_DESCRIP, DISTINGUISHING_FEATURES, DIVINE_DESCRIP, DRAGON_DESCRIP, EARTH_DESCRIP, EYE_COLORS, FIRE_DESCRIP, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, HEXBLOOD_DESCRIP, INFERNAL_DESCRIP, LIZARD_DESCRIP, MAIN_PRONOUN, NAMES, SECONDARY_PRONOUN, SKIN_FEATHERS, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SNAKE_DESCRIP, SPECIES, SPRING_DESCRIP, SUMMER_DESCRIP, WATER_DESCRIP, WINTER_DESCRIP } from 'src/assets/descrips.constants';
 import { RandomNumberService } from './_services/randomNumber.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { RandomNumberService } from './_services/randomNumber.service';
 })
 export class AppComponent implements OnInit {
   nameObj = {
-    name: '',
+    descrip: '',
     prevRoll: -1,
   };
 
@@ -28,12 +28,12 @@ export class AppComponent implements OnInit {
   };
 
   skinObj = {
-    skin: '',
+    descrip: '',
     prevRoll: -1
   };
 
   buildObj = {
-    build: '',
+    descrip: '',
     prevRoll: -1
   };
 
@@ -55,18 +55,37 @@ export class AppComponent implements OnInit {
   };
 
   eyeColorObj = {
-    color: '',
+    descrip: '',
     prevRoll: -1
   };
 
   distinguishingFeatureObj = {
-    name: '',
+    descrip: '',
+    prevRoll: -1
+  };
+
+  specialSpeciesDescripObj = {
+    descrip: '',
     prevRoll: -1
   };
 
   skinAdjective = 'skin';
 
   speciesStartsWithVowel = false;
+  specialSpeicesDescrips: any;
+
+  noHairSpecies = [
+    'Lizardfolk',
+    'Dragonborn',
+    'Serpentfolk',
+    'Dryad',
+    'Ent',
+    'Tabaxi',
+    'Canid',
+    'Gnoll'
+  ];
+
+  noHair = false;
 
   constructor(
     private randNum: RandomNumberService
@@ -81,17 +100,19 @@ export class AppComponent implements OnInit {
     this.reRollPronouns();
     this.reRollSpecies();
     this.reRollBuild();
-    this.reRollHairLength();
-    if (this.hairObj.length !== 'bald') {
-      this.reRollHairType();
-      this.reRollHairColor();
+    if (!this.noHair) {
+      this.reRollHairLength();
+      if (this.hairObj.length !== 'bald') {
+        this.reRollHairType();
+        this.reRollHairColor();
+      }
     }
     this.reRollEyeColor();
     this.reRollDistinguishingFeature();
   }
 
   reRollName() {
-    this.nameObj.name = this.getName();
+    this.nameObj.descrip = this.getDescripFromArray(NAMES, this.nameObj);
   }
 
   reRollMainPronoun() {
@@ -99,6 +120,8 @@ export class AppComponent implements OnInit {
     const rolledMain = this.randNum.getRandomNumber(0, mainLength, this.pronounsObj.prevMain);
     this.pronounsObj.prevMain = rolledMain;
     this.pronounsObj.pronouns_main = MAIN_PRONOUN[rolledMain];
+
+    this.fixPronouns();
   }
 
   reRollSecondaryPronoun() {
@@ -117,7 +140,188 @@ export class AppComponent implements OnInit {
   reRollSpecies() {
     this.speciesObj.species = this.getSpecies();
     this.speciesStartsWithVowel = this.checkForVowel();
+
+    this.noHair = this.noHairSpecies.includes(this.speciesObj.species.name);
+
     this.reRollSkinTone();
+    this.getSpecialSpeciesDescription();
+  }
+
+  private getSpecialSpeciesDescription() {
+    this.specialSpeciesDescripObj.descrip = '';
+    this.specialSpeciesDescripObj.prevRoll = -1;
+
+     this.specialSpeicesDescrips = {
+      spring: false,
+      summer: false,
+      autumn: false,
+      winter: false,
+      infernal: false,
+      divine: false,
+      lizard: false,
+      snake: false,
+      dragon: false,
+      hexblood: false,
+      cat: false,
+      fire: false,
+      water: false,
+      air: false,
+      earth: false,
+    };
+
+    for (const [key, value] of Object.entries(this.specialSpeicesDescrips)) {
+      if (key in this.speciesObj.species) {
+        this.specialSpeicesDescrips[key] = true;
+      }
+    }
+
+    this.assignSpecialDescrip();
+  }
+
+  public assignSpecialDescrip() {
+    switch(true) {
+      case this.specialSpeicesDescrips.spring: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(SPRING_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.summer: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(SUMMER_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.autumn: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(AUTUMN_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.winter: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(WINTER_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.infernal: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(INFERNAL_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.divine: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(DIVINE_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.lizard: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(LIZARD_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.snake: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(SNAKE_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.dragon: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(DRAGON_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.hexblood: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(HEXBLOOD_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.cat: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(CAT_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.fire: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(FIRE_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.water: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(WATER_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.air: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(AIR_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.earth: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(EARTH_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+    }
+
+    this.fixPronouns();
+  }
+
+  private fixPronouns() { // needs work
+    if (this.pronounsObj.pronouns_main === 'He') {
+      this.specialSpeciesDescripObj.descrip = this.specialSpeciesDescripObj.descrip
+      .replace(/(^|\b)they are\b/g, 'he is')
+        .replace(/(^|\b)they\b/g, 'he')
+        .replace(/(^|\b)them\b/g, 'him')
+        .replace(/(^|\b)their\b/g, 'his')
+        .replace(/(^|\b)she\b/g, 'he')
+        .replace(/(^|\b)her\b/g, 'his');
+
+      this.distinguishingFeatureObj.descrip = this.distinguishingFeatureObj.descrip
+      .replace(/(^|\b)they are\b/g, 'he is')
+        .replace(/(^|\b)they\b/g, 'he')
+        .replace(/(^|\b)them\b/g, 'him')
+        .replace(/(^|\b)their\b/g, 'his')
+        .replace(/(^|\b)she\b/g, 'he')
+        .replace(/(^|\b)her\b/g, 'his')
+        .replace(/(^|\b)her\b/g, 'his');
+
+      this.hairObj.hairLength = this.hairObj.hairLength
+      .replace(/(^|\b)they\b/g, 'he')
+      .replace(/(^|\b)them\b/g, 'him')
+      .replace(/(^|\b)their\b/g, 'his')
+      .replace(/(^|\b)she\b/g, 'he')
+      .replace(/(^|\b)her\b/g, 'his')
+      .replace(/(^|\b)her\b/g, 'his');
+
+    } else if (this.pronounsObj.pronouns_main === 'They') {
+      this.specialSpeciesDescripObj.descrip = this.specialSpeciesDescripObj.descrip
+      .replace(/(^|\b)he is\b/g, 'they are')
+        .replace(/(^|\b)he\b/g, 'they')
+        .replace(/(^|\b)him\b/g, 'them')
+        .replace(/(^|\b)his\b/g, 'their')
+        .replace(/(^|\b)she is\b/g, 'they are')
+        .replace(/(^|\b)she\b/g, 'they')
+        .replace(/(^|\b)her\b/g, 'their');
+
+      this.distinguishingFeatureObj.descrip = this.distinguishingFeatureObj.descrip
+      .replace(/(^|\b)he is\b/g, 'they are')
+        .replace(/(^|\b)he\b/g, 'they')
+        .replace(/(^|\b)him\b/g, 'them')
+        .replace(/(^|\b)his\b/g, 'their')
+        .replace(/(^|\b)she is\b/g, 'they are')
+        .replace(/(^|\b)she\b/g, 'they')
+        .replace(/(^|\b)her\b/g, 'their');
+
+        this.hairObj.hairLength = this.hairObj.hairLength
+        .replace(/(^|\b)his\b/g, 'their')
+        .replace(/(^|\b)her\b/g, 'their')
+
+    } else if (this.pronounsObj.pronouns_main === 'She') {
+      this.specialSpeciesDescripObj.descrip = this.specialSpeciesDescripObj.descrip
+      .replace(/(^|\b)they are\b/g, 'she is')
+        .replace(/(^|\b)they\b/g, 'she')
+        .replace(/(^|\b)them\b/g, 'her')
+        .replace(/(^|\b)their\b/g, 'her')
+        .replace(/(^|\b)he\b/g, 'she')
+        .replace(/(^|\b)him\b/g, 'her')
+        .replace(/(^|\b)his\b/g, 'her');
+
+      this.distinguishingFeatureObj.descrip = this.distinguishingFeatureObj.descrip
+        .replace(/(^|\b)they are\b/g, 'she is')  
+        .replace(/(^|\b)they\b/g, 'she')
+        .replace(/(^|\b)them\b/g, 'her')
+        .replace(/(^|\b)their\b/g, 'her')
+        .replace(/(^|\b)he\b/g, 'she')
+        .replace(/(^|\b)him\b/g, 'her')
+        .replace(/(^|\b)his\b/g, 'her');
+
+        this.hairObj.hairLength = this.hairObj.hairLength
+        .replace(/(^|\b)they\b/g, 'she')
+        .replace(/(^|\b)them\b/g, 'her')
+        .replace(/(^|\b)their\b/g, 'her')
+        .replace(/(^|\b)he\b/g, 'she')
+        .replace(/(^|\b)him\b/g, 'her')
+        .replace(/(^|\b)his\b/g, 'her');
+    }
   }
 
   reRollSkinTone() {
@@ -138,37 +342,38 @@ export class AppComponent implements OnInit {
     let skinTone = '';
 
     if (this.uniqueSkin.outsider) {
-      skinTone = this.getUnusualSkinTone();
+      skinTone = this.getDescripFromArray(SKIN_OUTSIDER, this.skinObj);
       if (['Gorgon', 'Dragonborn', 'Serpentfolk', 'Lizardfolk'].includes(this.speciesObj.species.name)) {
         this.skinAdjective = 'scales';
       } else {
         this.skinAdjective = 'skin';
       }
     } else if (this.uniqueSkin.fur) {
-      skinTone = this.getSkinFur();
+      skinTone = this.getDescripFromArray(SKIN_FUR, this.skinObj);
       this.skinAdjective = 'fur';
     } else if (this.uniqueSkin.feathers) {
-      skinTone = this.getSkinFeathers();
+      skinTone = this.getDescripFromArray(SKIN_FEATHERS, this.skinObj);
       this.skinAdjective = 'feathers';
     } else if (this.uniqueSkin.marine) {
-      skinTone = this.getSkinMarine();
+      skinTone = this.getDescripFromArray(SKIN_MARINE, this.skinObj);
       this.skinAdjective = 'hide';
     } else if (this.uniqueSkin.wood) {
-      skinTone = this.getWoodSkinTone();
+      skinTone = this.getDescripFromArray(SKIN_WOOD, this.skinObj);
       this.skinAdjective = 'bark';
     } else {
-      skinTone = this.getSkinTone();
+      skinTone = this.getDescripFromArray(SKIN_TONE, this.skinObj);
       this.skinAdjective = 'skin';
     }
-    this.skinObj.skin = skinTone;
+    this.skinObj.descrip = skinTone;
   }
 
   reRollBuild() {
-    this.buildObj.build = this.getBuild();
+    this.buildObj.descrip = this.getDescripFromArray(BUILD, this.buildObj);
   }
 
   reRollHairLength() {
     this.hairObj.hairLength = this.getHairLength();
+    this.fixPronouns();
   }
 
   reRollHairType() {
@@ -180,22 +385,15 @@ export class AppComponent implements OnInit {
   }
 
   reRollEyeColor() {
-    this.eyeColorObj.color = this.getEyeColor();
+    this.eyeColorObj.descrip = this.getDescripFromArray(EYE_COLORS, this.eyeColorObj);
   }
 
   reRollDistinguishingFeature() {
-    this.distinguishingFeatureObj.name = this.getDistinguishingFeature();
+    this.distinguishingFeatureObj.descrip = this.getDescripFromArray(DISTINGUISHING_FEATURES, this.distinguishingFeatureObj);
+    this.fixPronouns();
   }
 
-  getName() {
-    const namesLength = NAMES.length - 1;
-    const rolledName = this.randNum.getRandomNumber(0, namesLength, this.nameObj.prevRoll);
-    this.nameObj.prevRoll = rolledName;
-
-    return NAMES[rolledName];
-  }
-
-  getPronouns() {
+  getPronouns() { // cant use generic
     const mainLength = MAIN_PRONOUN.length - 1;
     const secondaryLength = SECONDARY_PRONOUN.length - 1;
     const rolledMain = this.randNum.getRandomNumber(0, mainLength, this.pronounsObj.prevMain);
@@ -210,68 +408,12 @@ export class AppComponent implements OnInit {
     };
   }
 
-  getSpecies() {
+  getSpecies() { // cant use generic
     const speciesLength = SPECIES.length - 1;
     const rolledSpecies = this.randNum.getRandomNumber(0, speciesLength, this.speciesObj.prevRoll);
     this.speciesObj.prevRoll = rolledSpecies;
 
     return SPECIES[rolledSpecies];
-  }
-
-  getSkinTone() {
-    const skinLength = SKIN_TONE.length - 1;
-    const rolledSkin = this.randNum.getRandomNumber(0, skinLength, this.skinObj.prevRoll);
-    this.skinObj.prevRoll = rolledSkin;
-
-    return SKIN_TONE[rolledSkin];
-  }
-
-  getUnusualSkinTone() {
-    const skinLength = SKIN_OUTSIDER.length - 1;
-    const rolledSkin = this.randNum.getRandomNumber(0, skinLength, this.skinObj.prevRoll);
-    this.skinObj.prevRoll = rolledSkin;
-
-    return SKIN_OUTSIDER[rolledSkin];
-  }
-
-  getWoodSkinTone() {
-    const skinLength = SKIN_WOOD.length - 1;
-    const rolledSkin = this.randNum.getRandomNumber(0, skinLength, this.skinObj.prevRoll);
-    this.skinObj.prevRoll = rolledSkin;
-
-    return SKIN_WOOD[rolledSkin];
-  }
-
-  getSkinFeathers() {
-    const skinLength = SKIN_FEATHERS.length - 1;
-    const rolledSkin = this.randNum.getRandomNumber(0, skinLength, this.skinObj.prevRoll);
-    this.skinObj.prevRoll = rolledSkin;
-
-    return SKIN_FEATHERS[rolledSkin];
-  }
-
-  getSkinMarine() {
-    const skinLength = SKIN_MARINE.length - 1;
-    const rolledSkin = this.randNum.getRandomNumber(0, skinLength, this.skinObj.prevRoll);
-    this.skinObj.prevRoll = rolledSkin;
-
-    return SKIN_MARINE[rolledSkin];
-  }
-
-  getSkinFur() {
-    const skinLength = SKIN_FUR.length - 1;
-    const rolledSkin = this.randNum.getRandomNumber(0, skinLength, this.skinObj.prevRoll);
-    this.skinObj.prevRoll = rolledSkin;
-
-    return SKIN_FUR[rolledSkin];
-  }
-
-  getBuild() {
-    const buildLength = BUILD.length - 1;
-    const rolledBuild = this.randNum.getRandomNumber(0, buildLength, this.buildObj.prevRoll);
-    this.buildObj.prevRoll = rolledBuild;
-
-    return BUILD[rolledBuild];
   }
 
   getHairLength() {
@@ -298,20 +440,12 @@ export class AppComponent implements OnInit {
     return HAIR_COLOR[rolledColor];
   }
 
-  getEyeColor() {
-    const colorLength = EYE_COLORS.length - 1;
-    const rolledColor = this.randNum.getRandomNumber(0, colorLength, this.eyeColorObj.prevRoll);
-    this.eyeColorObj.prevRoll = rolledColor;
+  getDescripFromArray(specialDescrips: Array<any>, obj: {descrip: string, prevRoll: number}): string {
+    const arrayLength = specialDescrips.length - 1;
+    const rolledValue = this.randNum.getRandomNumber(0, arrayLength, obj.prevRoll);
+    obj.prevRoll = rolledValue;
 
-    return EYE_COLORS[rolledColor];
-  }
-
-  getDistinguishingFeature() {
-    const featureLength = DISTINGUISHING_FEATURES.length - 1;
-    const rolledFeature = this.randNum.getRandomNumber(0, featureLength, this.distinguishingFeatureObj.prevRoll);
-    this.distinguishingFeatureObj.prevRoll = rolledFeature;
-
-    return DISTINGUISHING_FEATURES[rolledFeature];
+    return specialDescrips[rolledValue];
   }
 
   checkForVowel() {

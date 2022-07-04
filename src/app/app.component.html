@@ -9,22 +9,29 @@
     </span>
     
     <div>
-        You encounter <strong (click)="reRollName()">{{nameObj.name}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
+        You encounter <strong (click)="reRollName()">{{nameObj.descrip}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
     </div>
     <div>
-        {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'are' : 'is'}} {{speciesStartsWithVowel ? 'an' : 'a'}} <strong (click)="reRollSpecies()">{{speciesObj.species.name}}</strong> with <strong (click)="reRollSkinTone()">{{this.skinObj.skin}}</strong> {{skinAdjective}} and a <strong (click)="reRollBuild()">{{buildObj.build}}</strong> build.
-        <span *ngIf="hairObj.hairLength !== 'bald'; else baldSection">
-            Their <strong (click)="reRollHairColor()">{{hairObj.hairColor}}</strong> hair is <strong (click)="reRollHairType()">{{hairObj.hairType}}</strong> and <strong (click)="reRollHairLength()">{{hairObj.hairLength}}</strong>.
+        {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'are' : 'is'}} {{speciesStartsWithVowel ? 'an' : 'a'}} <strong (click)="reRollSpecies()">{{speciesObj.species.name}}</strong> with <strong (click)="reRollSkinTone()">{{this.skinObj.descrip}}</strong> {{skinAdjective}} and a <strong (click)="reRollBuild()">{{buildObj.descrip}}</strong> build.
+        <span *ngIf="noHair; else hairSection">
         </span>
+        <ng-template #hairSection>
+            <span *ngIf="hairObj.hairLength !== 'bald'; else baldSection">
+                {{pronounsObj.pronouns_main === 'He' ? 'His' : pronounsObj.pronouns_main === 'She' ? 'Her' : 'Their'}} <strong (click)="reRollHairColor()">{{hairObj.hairColor}}</strong> hair is <strong (click)="reRollHairType()">{{hairObj.hairType}}</strong> and <strong (click)="reRollHairLength()">{{hairObj.hairLength}}</strong>.
+            </span>
+        </ng-template>
         <ng-template #baldSection>
-            <strong (click)="reRollHairLength()">They are completely bald.</strong>
+            <strong (click)="reRollHairLength()">{{pronounsObj.pronouns_main === 'He' ? 'He' : pronounsObj.pronouns_main === 'She' ? 'She' : 'They'}} are completely bald.</strong>
         </ng-template>
         <span>
-            {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'have' : 'has'}} <strong (click)="reRollEyeColor()">{{eyeColorObj.color}}</strong> eyes.
+            {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'have' : 'has'}} <strong (click)="reRollEyeColor()">{{eyeColorObj.descrip}}</strong> eyes
+            <span *ngIf="specialSpeciesDescripObj.descrip">
+                and <strong (click)="assignSpecialDescrip()">{{specialSpeciesDescripObj.descrip}}</strong>
+            </span>
         </span>
     </div>
     <div>
-        Their most distinguishing feature is <strong (click)="reRollDistinguishingFeature()">{{distinguishingFeatureObj.name}}</strong>.
+        {{pronounsObj.pronouns_main === 'He' ? 'His' : pronounsObj.pronouns_main === 'She' ? 'Her' : 'Their'}} most distinguishing feature is/are <strong (click)="reRollDistinguishingFeature()">{{distinguishingFeatureObj.descrip}}</strong>.
     </div>
 
     <em class="link">WHO GOES THERE? is created by <strong><a href='https://twitter.com/codeLiches' target="_blank">@codeLiches</a></strong></em>
