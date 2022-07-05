@@ -288,6 +288,11 @@ export const SPECIES = [
         name: 'Goblin',
         outsider: true,
         goblin: true,
+    },
+    {
+        name: 'Kobold',
+        outsider: true,
+        kobold: true,
     }
 ];
 
@@ -770,4 +775,21 @@ export const GOBLIN_DESCRIP = [
     'clippity cloppity cloven hooves',
     'long ears atop their head like a rabbit',
     'a cat-like mouth, sans whiskers'
+];
+
+export const KOBOLD_DESCRIP = [
+    'those eyes glow-in-the-dark',
+    'a piebald scale pattern',
+    'crystals sprouting from their head and neck like a mane',
+    'an extra head, complete with its own neck',
+    'leathery wings, folded around them like a mantle',
+    'a set of straight horns, pointing to the heavens',
+    'a set of curled horns, like a ram',
+    'a set of wavy horns, like an impala',
+    'eyes that can move independently',
+    'scales that can change color to blend into the environment',
+    'a frill along their neck that opens and closes like an umbrella',
+    'sharp, tough claws',
+    'a thick tail',
+    'a detachable tail that regrows in 3-5 days',
 ];
