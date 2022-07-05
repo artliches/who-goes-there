@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1656998241958,
-  "index": "/npc-generator/index.html",
+  "timestamp": 1656998423263,
+  "index": "/who-goes-there/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "/npc-generator/favicon.ico",
-        "/npc-generator/index.html",
-        "/npc-generator/main.48fe3ab4c53f162a.js",
-        "/npc-generator/manifest.webmanifest",
-        "/npc-generator/polyfills.dff0e48ff86e1a59.js",
-        "/npc-generator/runtime.1ba44b845055237a.js",
-        "/npc-generator/styles.e9616e7681bfb062.css"
+        "/who-goes-there/favicon.ico",
+        "/who-goes-there/index.html",
+        "/who-goes-there/main.48fe3ab4c53f162a.js",
+        "/who-goes-there/manifest.webmanifest",
+        "/who-goes-there/polyfills.dff0e48ff86e1a59.js",
+        "/who-goes-there/runtime.1ba44b845055237a.js",
+        "/who-goes-there/styles.e9616e7681bfb062.css"
       ],
       "patterns": []
     },
@@ -29,37 +29,37 @@
         "ignoreVary": true
       },
       "urls": [
-        "/npc-generator/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf",
-        "/npc-generator/assets/descrips.constants.ts",
-        "/npc-generator/assets/fonts/RobotoMono-VariableFont_wght.ttf",
-        "/npc-generator/assets/icons/android-chrome-192x192.png",
-        "/npc-generator/assets/icons/android-chrome-512x512.png",
-        "/npc-generator/assets/icons/apple-touch-icon.png",
-        "/npc-generator/assets/icons/favicon-16x16.png",
-        "/npc-generator/assets/icons/favicon-32x32.png",
-        "/npc-generator/assets/icons/favicon.ico"
+        "/who-goes-there/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf",
+        "/who-goes-there/assets/descrips.constants.ts",
+        "/who-goes-there/assets/fonts/RobotoMono-VariableFont_wght.ttf",
+        "/who-goes-there/assets/icons/android-chrome-192x192.png",
+        "/who-goes-there/assets/icons/android-chrome-512x512.png",
+        "/who-goes-there/assets/icons/apple-touch-icon.png",
+        "/who-goes-there/assets/icons/favicon-16x16.png",
+        "/who-goes-there/assets/icons/favicon-32x32.png",
+        "/who-goes-there/assets/icons/favicon.ico"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/npc-generator/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
-    "/npc-generator/assets/descrips.constants.ts": "c9d64e80fc51402d934fff40e7d9557cec4a5ddd",
-    "/npc-generator/assets/fonts/RobotoMono-VariableFont_wght.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
-    "/npc-generator/assets/icons/android-chrome-192x192.png": "921655565463cac862e81312cbc9861ed9d96973",
-    "/npc-generator/assets/icons/android-chrome-512x512.png": "be7d877bbb9eafb8bc3493df562b64ca646bc9cf",
-    "/npc-generator/assets/icons/apple-touch-icon.png": "c7a33bac1f104ecd1c47bb18d2169d206ea537e6",
-    "/npc-generator/assets/icons/favicon-16x16.png": "41149ab675430514b667b788f549dbd9f6c23d84",
-    "/npc-generator/assets/icons/favicon-32x32.png": "e0c905cfb84f324f3f53fa105ad7b53b549a2678",
-    "/npc-generator/assets/icons/favicon.ico": "235ed27da892ee49d3a8f59d4480f706712e8325",
-    "/npc-generator/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/npc-generator/index.html": "1e1cc36d9dfdfc4a68a810f56ca152b3f40eaa35",
-    "/npc-generator/main.48fe3ab4c53f162a.js": "929156c1fbf5063c8aa7e199fb62d21898581351",
-    "/npc-generator/manifest.webmanifest": "4ab6d6ce83f9522ed143bcb69385b583ad8c1af7",
-    "/npc-generator/polyfills.dff0e48ff86e1a59.js": "c7c72a0646b900cf68197a78758cf74edf7d4a45",
-    "/npc-generator/runtime.1ba44b845055237a.js": "6ab755e7cd2796f8fb3d500386a7bcb85eceb349",
-    "/npc-generator/styles.e9616e7681bfb062.css": "5a37768ec736a43fcf2425b6a424f8d4867b5272"
+    "/who-goes-there/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
+    "/who-goes-there/assets/descrips.constants.ts": "c9d64e80fc51402d934fff40e7d9557cec4a5ddd",
+    "/who-goes-there/assets/fonts/RobotoMono-VariableFont_wght.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
+    "/who-goes-there/assets/icons/android-chrome-192x192.png": "921655565463cac862e81312cbc9861ed9d96973",
+    "/who-goes-there/assets/icons/android-chrome-512x512.png": "be7d877bbb9eafb8bc3493df562b64ca646bc9cf",
+    "/who-goes-there/assets/icons/apple-touch-icon.png": "c7a33bac1f104ecd1c47bb18d2169d206ea537e6",
+    "/who-goes-there/assets/icons/favicon-16x16.png": "41149ab675430514b667b788f549dbd9f6c23d84",
+    "/who-goes-there/assets/icons/favicon-32x32.png": "e0c905cfb84f324f3f53fa105ad7b53b549a2678",
+    "/who-goes-there/assets/icons/favicon.ico": "235ed27da892ee49d3a8f59d4480f706712e8325",
+    "/who-goes-there/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/who-goes-there/index.html": "165a30610a935f7c09b228ec5a51be994753c1a5",
+    "/who-goes-there/main.48fe3ab4c53f162a.js": "929156c1fbf5063c8aa7e199fb62d21898581351",
+    "/who-goes-there/manifest.webmanifest": "4ab6d6ce83f9522ed143bcb69385b583ad8c1af7",
+    "/who-goes-there/polyfills.dff0e48ff86e1a59.js": "c7c72a0646b900cf68197a78758cf74edf7d4a45",
+    "/who-goes-there/runtime.1ba44b845055237a.js": "6ab755e7cd2796f8fb3d500386a7bcb85eceb349",
+    "/who-goes-there/styles.e9616e7681bfb062.css": "5a37768ec736a43fcf2425b6a424f8d4867b5272"
   },
   "navigationUrls": [
     {
