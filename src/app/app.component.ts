@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AIR_DESCRIP, AUTUMN_DESCRIP, BUILD, CAT_DESCRIP, DISTINGUISHING_FEATURES, DIVINE_DESCRIP, DRAGON_DESCRIP, EARTH_DESCRIP, EYE_COLORS, FIRE_DESCRIP, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, HEXBLOOD_DESCRIP, INFERNAL_DESCRIP, LIZARD_DESCRIP, MAIN_PRONOUN, NAMES, SECONDARY_PRONOUN, SKIN_FEATHERS, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SNAKE_DESCRIP, SPECIES, SPRING_DESCRIP, SUMMER_DESCRIP, WATER_DESCRIP, WINTER_DESCRIP } from 'src/assets/descrips.constants';
+import { AIR_DESCRIP, AUTUMN_DESCRIP, BUILD, CANID_DESCRIP, CAT_DESCRIP, CENTAUR_DESCRIP, DISTINGUISHING_FEATURES, DIVINE_DESCRIP, DRAGON_DESCRIP, EARTH_DESCRIP, EYE_COLORS, FIRE_DESCRIP, FISH_DESCRIP, GOBLIN_DESCRIP, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, HEXBLOOD_DESCRIP, INFERNAL_DESCRIP, LAMIA_DESCRIP, LIZARD_DESCRIP, MAIN_PRONOUN, MEDUSA_DESCRIP, NAMES, PLANT_DESCRIP, SECONDARY_PRONOUN, SKIN_FEATHERS, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SNAKE_DESCRIP, SPECIES, SPHINX_DESCRIP, SPRING_DESCRIP, SUMMER_DESCRIP, UNICORN_DESCRIP, WATER_DESCRIP, WINTER_DESCRIP } from 'src/assets/descrips.constants';
 import { RandomNumberService } from './_services/randomNumber.service';
 
 @Component({
@@ -82,7 +82,9 @@ export class AppComponent implements OnInit {
     'Ent',
     'Tabaxi',
     'Canid',
-    'Gnoll'
+    'Gnoll',
+    'Triton',
+    'Leonin',
   ];
 
   noHair = false;
@@ -142,6 +144,13 @@ export class AppComponent implements OnInit {
     this.speciesStartsWithVowel = this.checkForVowel();
 
     this.noHair = this.noHairSpecies.includes(this.speciesObj.species.name);
+    if (!this.noHair && this.hairObj.lastColor === -1 || this.speciesObj.species.name === 'Gorgon' && this.hairObj.hairLength === 'bald') {
+      this.reRollHairLength();
+      if (this.hairObj.length !== 'bald') {
+        this.reRollHairType();
+        this.reRollHairColor();
+      }
+    }
 
     this.reRollSkinTone();
     this.getSpecialSpeciesDescription();
@@ -167,6 +176,15 @@ export class AppComponent implements OnInit {
       water: false,
       air: false,
       earth: false,
+      fish: false,
+      lamia: false,
+      horse: false,
+      plant: false,
+      unicorn: false,
+      sphinx: false,
+      medusa: false,
+      dog: false,
+      goblin: false,
     };
 
     for (const [key, value] of Object.entries(this.specialSpeicesDescrips)) {
@@ -240,12 +258,52 @@ export class AppComponent implements OnInit {
         this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(EARTH_DESCRIP, this.specialSpeciesDescripObj);
         break;
       }
+      case this.specialSpeicesDescrips.fish: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(FISH_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.lamia: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(LAMIA_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.horse: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(CENTAUR_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.plant: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(PLANT_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.unicorn: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(UNICORN_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.sphinx: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(SPHINX_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.medusa: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(MEDUSA_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.dog: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(CANID_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      case this.specialSpeicesDescrips.goblin: {
+        this.specialSpeciesDescripObj.descrip = this.getDescripFromArray(GOBLIN_DESCRIP, this.specialSpeciesDescripObj);
+        break;
+      }
+      default: {
+        this.specialSpeciesDescripObj.descrip = '';
+        this.specialSpeciesDescripObj.prevRoll = -1;
+      }
     }
 
     this.fixPronouns();
   }
 
-  private fixPronouns() { // needs work
+  private fixPronouns() {
     if (this.pronounsObj.pronouns_main === 'He') {
       this.specialSpeciesDescripObj.descrip = this.specialSpeciesDescripObj.descrip
       .replace(/(^|\b)they are\b/g, 'he is')
@@ -343,7 +401,7 @@ export class AppComponent implements OnInit {
 
     if (this.uniqueSkin.outsider) {
       skinTone = this.getDescripFromArray(SKIN_OUTSIDER, this.skinObj);
-      if (['Gorgon', 'Dragonborn', 'Serpentfolk', 'Lizardfolk'].includes(this.speciesObj.species.name)) {
+      if (['Dragonborn', 'Serpentfolk', 'Lizardfolk'].includes(this.speciesObj.species.name)) {
         this.skinAdjective = 'scales';
       } else {
         this.skinAdjective = 'skin';
@@ -418,7 +476,8 @@ export class AppComponent implements OnInit {
 
   getHairLength() {
     const hairLengthLength = HAIR_LENGTH.length - 1;
-    const rolledLength = this.randNum.getRandomNumber(0, hairLengthLength, this.hairObj.lastLength);
+    const startingIndex = this.speciesObj.species.name !== 'Gorgon' ? 0 : 1;
+    const rolledLength = this.randNum.getRandomNumber(startingIndex, hairLengthLength, this.hairObj.lastLength);
     this.hairObj.lastLength = rolledLength;
 
     return HAIR_LENGTH[rolledLength];

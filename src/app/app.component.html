@@ -1,7 +1,7 @@
 <span class="npc-gen-grid">
     <span class="center">
         <h1>WHO GOES THERE?</h1>
-        <em><span class="rotate-arrow">&#8626;</span>randomized prompts for creating NPCS for swords & sworcery games</em>
+        <em><span class="rotate-arrow">&#8626;</span>randomized NPCS for swords & sworcery games</em>
     </span>
     <span class="center">
         <strong class="center reroll" (click)="rollAll()">someone new approaches</strong>
@@ -17,16 +17,16 @@
         </span>
         <ng-template #hairSection>
             <span *ngIf="hairObj.hairLength !== 'bald'; else baldSection">
-                {{pronounsObj.pronouns_main === 'He' ? 'His' : pronounsObj.pronouns_main === 'She' ? 'Her' : 'Their'}} <strong (click)="reRollHairColor()">{{hairObj.hairColor}}</strong> hair is <strong (click)="reRollHairType()">{{hairObj.hairType}}</strong> and <strong (click)="reRollHairLength()">{{hairObj.hairLength}}</strong>.
+                {{pronounsObj.pronouns_main === 'He' ? 'His' : pronounsObj.pronouns_main === 'She' ? 'Her' : 'Their'}} <strong (click)="reRollHairColor()">{{hairObj.hairColor}}</strong> {{speciesObj.species.name === 'Gorgon' ? 'snakes are' : 'hair is'}} <strong (click)="reRollHairType()">{{hairObj.hairType}}</strong> and <strong (click)="reRollHairLength()">{{hairObj.hairLength}}</strong>.
             </span>
         </ng-template>
         <ng-template #baldSection>
-            <strong (click)="reRollHairLength()">{{pronounsObj.pronouns_main === 'He' ? 'He' : pronounsObj.pronouns_main === 'She' ? 'She' : 'They'}} are completely bald.</strong>
+            <strong (click)="reRollHairLength()">{{pronounsObj.pronouns_main === 'He' ? 'He is' : pronounsObj.pronouns_main === 'She' ? 'She is' : 'They are'}} completely bald.</strong>
         </ng-template>
         <span>
-            {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'have' : 'has'}} <strong (click)="reRollEyeColor()">{{eyeColorObj.descrip}}</strong> eyes
+            {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'have' : 'has'}} <strong (click)="reRollEyeColor()">{{eyeColorObj.descrip}}</strong> eyes<span *ngIf="!specialSpeciesDescripObj.descrip">.</span>
             <span *ngIf="specialSpeciesDescripObj.descrip">
-                and <strong (click)="assignSpecialDescrip()">{{specialSpeciesDescripObj.descrip}}</strong>
+                and <strong (click)="assignSpecialDescrip()">{{specialSpeciesDescripObj.descrip}}</strong>.
             </span>
         </span>
     </div>
