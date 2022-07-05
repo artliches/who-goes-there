@@ -207,10 +207,12 @@ export const SPECIES = [
     {
         name: 'Triton',
         marine: true,
+        fish: true,
     },
     {
         name: 'Merfolk',
         marine: true,
+        fish: true,
     },
     {
         name: 'Harpy',
@@ -218,22 +220,26 @@ export const SPECIES = [
     },
     {
         name: 'Lamia',
-        outsider: true,
+        lamia: true,
     },
     {
         name: 'Centaur',
+        horse: true,
     },
     {
         name: 'Dryad',
         wood: true,
+        plant: true,
     },
     {
         name: 'Ent',
         wood: true,
+        plant: true,
     },
     {
         name: 'Unicorn trapped in a mortal shell',
         outsider: true,
+        unicorn: true,
     },
     {
         name: 'Selkie',
@@ -242,18 +248,21 @@ export const SPECIES = [
     {
         name: 'Leonin',
         fur: true,
+        cat: true
     },
     {
         name: 'Sphinx',
         fur: true,
+        sphinx: true,
     },
     {
         name: 'Gorgon',
-        outsider: true,
+        medusa: true,
     },
     {
         name: 'Canid',
         fur: true,
+        dog: true,
     },
     {
         name: 'Formorian',
@@ -262,6 +271,7 @@ export const SPECIES = [
     {
         name: 'Gnoll',
         fur: true,
+        dog: true,
     },
     {
         name: 'Half-Elf'
@@ -273,6 +283,11 @@ export const SPECIES = [
     {
         name: 'Half-Orc',
         outsider: true,
+    },
+    {
+        name: 'Goblin',
+        outsider: true,
+        goblin: true,
     }
 ];
 
@@ -344,6 +359,7 @@ export const SKIN_MARINE = [
     'blue-ringed ocotopus',
     'sea angel',
     'angler fish',
+    'eel'
 ];
 
 export const BUILD = [
@@ -378,13 +394,13 @@ export const HAIR_COLOR = [
     'raven black',
     'mousey brown',
     'firey red',
-    'dirty blonde',
+    'goldenrod',
     'platinum blonde',
     'silvery gray',
     'salt & pepper',
     'dark brown',
-    'strawberry blonde',
-    'golden blonde',
+    'copper',
+    'golden',
 ];
 
 export const EYE_COLORS = [
@@ -399,6 +415,7 @@ export const EYE_COLORS = [
 ];
 
 export const DISTINGUISHING_FEATURES = [
+    'the many candles that are stuck to their shoulders',
     'that they are covered in old scars',
     'their missing eye',
     'their missing hand',
@@ -420,7 +437,7 @@ export const DISTINGUISHING_FEATURES = [
     'their distinguished mole',
     'their mouth full of sharp teeth',
     'their split tounge',
-    'that they are bedecked in jewelery',
+    'that they are bedecked in jewelry',
     'their immaculately painted nails',
     'their confident strut in stiletto heels',
     'their intricate makeup',
@@ -452,7 +469,7 @@ export const SPRING_DESCRIP = [
 export const SUMMER_DESCRIP = [
     'a lion-like tail',
     'tufts of fur along the elbows and ankles',
-    'sharp, predator-like pupils',
+    'sharp, feline pupils',
     'fuzzy, elfish ears',
     'retractable claws',
     'fuzzy, digigrade legs, complete with claws',
@@ -591,13 +608,20 @@ export const CAT_DESCRIP = [
     'a cotton candy pink nose',
     'a distinguished, flat face',
     'long, well-groomed whiskers',
-    'they look in two different directions',
     'a stubby, rabbit-like tail',
     'huge handpaws',
     'rounded, lion-like ears',
     'a thick, whip-like tail with a tuft on the end',
     'an underbite',
     'a notch in their ear',
+];
+
+export const LAMIA_DESCRIP = [
+    'a tiger striped lower body with huge, powerful paws',
+    'a golden lion lower body with long dark fur along the ankles',
+    'a sleek clouded leopard lower body with two tails',
+    'a silvery lynx lower body with a stubby, rabbit-like tail',
+    'a jet-black puma lower body with white paw socks',
 ];
 
 export const FIRE_DESCRIP = [
@@ -628,15 +652,122 @@ export const AIR_DESCRIP = [
     'their hair is constantly wind-swept and waving in a non-existent breeze',
     'they seem to float slightly when they move',
     'their voice sounds like bird song',
-    'birds tend to congregate near them'
+    'birds tend to congregate near them',
+    'their skin has swirls like wind'
 ];
 
 export const EARTH_DESCRIP = [
     'their voice is deep and echos',
-    'precious stones embedded in their skin',
+    'precious stones are embedded in their skin',
     'runic carvings along their arms',
     'a scar that shimmers like a geode',
     'crystals sprouting along their shoulders and back',
     'the inside of their mouth glitters like treasure whenever they laughs',
     'their hair splits light like a prism'
+];
+
+export const FISH_DESCRIP = [
+    'a bioluminescent angler fin',
+    'bioluminescent spots along the flanks of their body',
+    'fan-like exterior gills',
+    'a long, thresher tail',
+    'a rough, sandpapery hide',
+    'gossamer fins that trail like the train of a dress',
+    'a flat, eel-like tail',
+    'an enormous fan-like fin upon their back',
+    'a cluster of eight of grasping tentacles',
+    'the ability to generate electricty',
+];
+
+export const CENTAUR_DESCRIP = [
+    'an ebony black clydesdale lower half',
+    'a honey gold deer lower half',
+    'a black-and-white spotted bovine lower body',
+    'a ginger highland cow lower body',
+    'a pinto lower half',
+    'a brown and white impala lower half',
+    'a pure white unicorn lower half',
+    'a lanky limbed, spotted giraffe lower half',
+    'a soft, fluffy alpaca lower half'
+];
+
+export const PLANT_DESCRIP = [
+    'delicate pink flowers sprouting from their shoulders',
+    'small woodland creatures nesting within their chest',
+    'a colony of honeybees have setup shop within their chest',
+    'a single, overprotecive raven',
+    'leaves that shift colors with the seasons',
+    'flowers that sprout in the morning and wither at night',
+    'a family of opossums hanging by the tail off their arms',
+    'ancient elvish love poems carved all along their body',
+    'poisonous flowers flow from their head like a cascade of hair',
+    'delicately sweet smelling flowers bloom around them wherever they stand',
+    'fireflies meander out when the sun sets'
+];
+
+export const UNICORN_DESCRIP = [
+    'moves like a shadow across the sea',
+    'shimmers like sea foam in a certain light',
+    'is the most beautiful and heart-wrenching thing you\'ve ever seen',
+    'has a horn that shivers with a seashell light and can pierce even dragonhide',
+    'possess the oldest, wildest grace that horses never had, and that deer only have in a thin imitation',
+    'they reflect a distant forest, untouched by man and time',
+    'a scar upon their forehead like a starburst',
+    'faun-like cloven hooves with snow-white fur along the fetlocks'
+];
+
+export const SPHINX_DESCRIP = [
+    'wings made of pure gold, ancient oaths carved upon each feather',
+    'wings that are filled with starlight and nebulas',
+    'wings made of peacock tail feathers',
+    'wings that are white as untrod snow',
+    'wings that are dark as a moonless night',
+    'wings made of the swords of would-be conquerors',
+    'wings made of the crowns of fallen kings, beaten flat',
+    'wings covered in moss and tiny flowers',
+    'wings filled with tattered feathers, telling of a history of strife',
+    'wings with blood red feathers that shimmer like flames'
+];
+
+export const MEDUSA_DESCRIP = [
+    'puppy-faced ball pythons that curl up when they are nervous',
+    'sharp-fanged vipers that eye newcomers suspiciously',
+    'enormous anacondas that laze around confidently',
+    'adorable hognoses that curiously prod anything nearby',
+    'vibrant rainbow boas that each have two heads',
+    'sleek mambas that watch everything with cool, measured glances',
+    'rattlesnakes that vocalize rattles through their voice',
+    'regal cobras with mezmerizing eye patterns',
+    'some of the snake heads are missing, a gruesome reminder that the world can be cruel',
+    'multicolored ring corn snakes, with deeply contrasting colors',
+];
+
+export const CANID_DESCRIP = [
+    'a tight, curled tail',
+    'floppy ears',
+    'tall, attentive ears',
+    'a docked tail',
+    'a long, distinguished snout',
+    'a long, whip-like tail',
+    'a huge fluffy tail',
+    'a notch in one of their ears',
+    'false eyes upon their brow',
+    'low hanging jowls',
+    'clipped ears',
+    'a thick, bushy tail',
+];
+
+export const GOBLIN_DESCRIP = [
+    'huge, bat-like ears',
+    'a thick, whip-like tail ending in a tuft of fur',
+    'those eyes glow-in-the-dark',
+    'small tusks that stick out',
+    'a lingering scent of gunpowder',
+    'a short, pink, pig-like nose',
+    'a jaw that can shoot out like a goblin shark',
+    'tough, stubby claws',
+    'an extra set of arms',
+    'clippity cloppity cloven hooves',
+    'long ears atop their head like a rabbit',
+    'a cat-like mouth, sans whiskers'
 ];
