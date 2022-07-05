@@ -43,6 +43,9 @@ em {
         place-self: center;
         position: absolute;
         bottom: 0;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        color: grey;
         a {
             color: white;
             &:hover {
