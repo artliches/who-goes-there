@@ -46,11 +46,18 @@ em {
         margin-bottom: 0.5rem;
         font-size: 0.8rem;
         color: grey;
+        display: grid;
+        place-items: center;
+        grid-gap: 0.5rem;
         a {
             color: white;
             &:hover {
                 color: black;
             }
+        }
+
+        .copyButton {
+            font-size: 0.9rem;
         }
     }
 }

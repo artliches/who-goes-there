@@ -8,10 +8,10 @@
         <em><span class="rotate-arrow">&#8626;</span>click to re-roll</em>
     </span>
     
-    <div>
+    <div #introduction>
         You encounter <strong (click)="reRollName()">{{nameObj.descrip}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
     </div>
-    <div>
+    <div #mainDescription>
         {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'are' : 'is'}} {{speciesStartsWithVowel ? 'an' : 'a'}} <strong (click)="reRollSpecies()">{{speciesObj.species.name}}</strong> with <strong (click)="reRollSkinTone()">{{this.skinObj.descrip}}</strong> {{skinAdjective}} and a <strong (click)="reRollBuild()">{{buildObj.descrip}}</strong> build.
         <span *ngIf="noHair; else hairSection">
         </span>
@@ -30,9 +30,12 @@
             </span>
         </span>
     </div>
-    <div>
+    <div #distinguishingFeatures>
         {{pronounsObj.pronouns_main === 'He' ? 'His' : pronounsObj.pronouns_main === 'She' ? 'Her' : 'Their'}} most distinguishing feature is/are <strong (click)="reRollDistinguishingFeature()">{{distinguishingFeatureObj.descrip}}</strong>.
     </div>
 
-    <span class="link">WHO GOES THERE?v1.0 is created by <strong><a href='https://twitter.com/codeLiches' target="_blank">@codeLiches</a></strong></span>
+    <span class="link">
+        <strong class="copyButton" (click)="copyToClipboard()">copy to clipboard</strong>
+        <span>WHO GOES THERE?v1.1 is created by <strong><a href='https://twitter.com/codeLiches' target="_blank">@codeLiches</a></strong></span>
+    </span>
 </span>

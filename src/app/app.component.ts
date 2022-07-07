@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, } from '@angular/core';
 import { AIR_DESCRIP, AUTUMN_DESCRIP, BUILD, CANID_DESCRIP, CAT_DESCRIP, CENTAUR_DESCRIP, DISTINGUISHING_FEATURES, DIVINE_DESCRIP, DRAGON_DESCRIP, EARTH_DESCRIP, EYE_COLORS, FIRE_DESCRIP, FISH_DESCRIP, GOBLIN_DESCRIP, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, HEXBLOOD_DESCRIP, INFERNAL_DESCRIP, KOBOLD_DESCRIP, LAMIA_DESCRIP, LIZARD_DESCRIP, MAIN_PRONOUN, MEDUSA_DESCRIP, NAMES, PLANT_DESCRIP, SECONDARY_PRONOUN, SKIN_FEATHERS, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SNAKE_DESCRIP, SPECIES, SPHINX_DESCRIP, SPRING_DESCRIP, SUMMER_DESCRIP, UNICORN_DESCRIP, WATER_DESCRIP, WINTER_DESCRIP } from 'src/assets/descrips.constants';
 import { RandomNumberService } from './_services/randomNumber.service';
 
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   skinObj = {
     descrip: '',
-    prevRoll: -1
+    prevRoll: -1,
   };
 
   buildObj = {
@@ -40,8 +40,8 @@ export class AppComponent implements OnInit {
   uniqueSkin: any = {
     outsider: false,
     fur: false,
-    wood: false,
-    marine: false,
+    bark: false,
+    hide: false,
     feathers: false,
   }
 
@@ -90,24 +90,42 @@ export class AppComponent implements OnInit {
 
   noHair = false;
 
+  previousSpeciesHairless: boolean = false;
+
+  clipBoard = '';
+
+  @ViewChild('introduction') introduction: any;
+  @ViewChild('mainDescription') mainDescription: any;
+  @ViewChild('distinguishingFeatures') distinguishingFeatures: any;
+
   constructor(
-    private randNum: RandomNumberService
+    private randNum: RandomNumberService,
   ) {};
 
   ngOnInit(): void {
     this.rollAll();
   }
 
+  copyToClipboard() {
+      this.clipBoard =
+        this.introduction.nativeElement.innerText +
+        this.mainDescription.nativeElement.innerText +
+        this.distinguishingFeatures.nativeElement.innerText;
+
+        navigator.clipboard.writeText(this.clipBoard);
+  }
+
   rollAll() {
     this.reRollName();
     this.reRollPronouns();
-    this.reRollSpecies();
+    this.getInitialSpecies();
+    this.reRollSkinTone();
     this.reRollBuild();
     if (!this.noHair) {
       this.reRollHairLength();
       if (this.hairObj.length !== 'bald') {
-        this.reRollHairType();
         this.reRollHairColor();
+        this.reRollHairType();
       }
     }
     this.reRollEyeColor();
@@ -141,19 +159,27 @@ export class AppComponent implements OnInit {
   }
 
   reRollSpecies() {
+    this.getInitialSpecies();
+
+    // need to check if our current species is incompatible with the previous skintone
+    this.reRollSkinTone();
+
+    // if our current species can have hair...
+    // and if we are coming from a species without hair
+    if (!this.noHair && this.previousSpeciesHairless) {
+      this.reRollHairLength();
+      if (this.hairObj.length !== 'bald') {
+        this.reRollHairColor();
+        this.reRollHairType();
+      }
+    }
+  }
+
+  getInitialSpecies() {
     this.speciesObj.species = this.getSpecies();
     this.speciesStartsWithVowel = this.checkForVowel();
 
     this.noHair = this.noHairSpecies.includes(this.speciesObj.species.name);
-    if (!this.noHair && this.hairObj.lastColor === -1 || this.speciesObj.species.name === 'Gorgon' && this.hairObj.hairLength === 'bald') {
-      this.reRollHairLength();
-      if (this.hairObj.length !== 'bald') {
-        this.reRollHairType();
-        this.reRollHairColor();
-      }
-    }
-
-    this.reRollSkinTone();
     this.getSpecialSpeciesDescription();
   }
 
@@ -392,8 +418,8 @@ export class AppComponent implements OnInit {
     this.uniqueSkin = {
       outsider: false,
       fur: false,
-      wood: false,
-      marine: false,
+      bark: false,
+      hide: false,
       feathers: false,
     };
 
@@ -418,10 +444,10 @@ export class AppComponent implements OnInit {
     } else if (this.uniqueSkin.feathers) {
       skinTone = this.getDescripFromArray(SKIN_FEATHERS, this.skinObj);
       this.skinAdjective = 'feathers';
-    } else if (this.uniqueSkin.marine) {
+    } else if (this.uniqueSkin.hide) {
       skinTone = this.getDescripFromArray(SKIN_MARINE, this.skinObj);
       this.skinAdjective = 'hide';
-    } else if (this.uniqueSkin.wood) {
+    } else if (this.uniqueSkin.bark) {
       skinTone = this.getDescripFromArray(SKIN_WOOD, this.skinObj);
       this.skinAdjective = 'bark';
     } else {

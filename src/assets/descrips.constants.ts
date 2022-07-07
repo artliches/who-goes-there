@@ -1,4 +1,8 @@
 export const NAMES = [
+    'Coheed',
+    'Cambria',
+    'Vaxis',
+    'Newo',
     'Orthis',
     'Adrian',
     'Rem',
@@ -206,12 +210,12 @@ export const SPECIES = [
     },
     {
         name: 'Triton',
-        marine: true,
+        hide: true,
         fish: true,
     },
     {
         name: 'Merfolk',
-        marine: true,
+        hide: true,
         fish: true,
     },
     {
@@ -228,12 +232,12 @@ export const SPECIES = [
     },
     {
         name: 'Dryad',
-        wood: true,
+        bark: true,
         plant: true,
     },
     {
         name: 'Ent',
-        wood: true,
+        bark: true,
         plant: true,
     },
     {
@@ -392,7 +396,7 @@ export const HAIR_LENGTH = [
     'sits at their shoulders',
     'goes down to their midback',
     'ends at the back of their knees',
-    'is dragging on the floor',
+    'is long enough to drag on the floor',
 ];
 
 export const HAIR_COLOR = [
