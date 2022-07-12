@@ -102,7 +102,23 @@ export const NAMES = [
     'Errol',
     'Iris',
     'Pyrite',
-    'Rorick the Second'
+    'Rorick',
+    'Hitomi',
+    'Gianna',
+    'White Chain',
+    'Liminal Blossom',
+    'Vengeful Iron',
+    'Vigil',
+    'Vigilant Gaze',
+    'Purity',
+    'Transcendent Waters',
+    'Pitch',
+    'Bagherra',
+    'Cersei',
+    'Quinn',
+    'Ein',
+    'Luna',
+    'Lemillion'
 ];
 
 export const MAIN_PRONOUN = [
@@ -297,6 +313,11 @@ export const SPECIES = [
         name: 'Kobold',
         outsider: true,
         kobold: true,
+    },
+    {
+        name: 'Lapine',
+        fur: true,
+        rabbit: true,
     }
 ];
 
@@ -345,6 +366,9 @@ export const SKIN_FUR = [
     'paw-socked',
     'calico',
     'maned',
+    'snowy white',
+    'charcoal black',
+    'deep navy blue'
 ];
 
 export const SKIN_FEATHERS = [
@@ -407,7 +431,7 @@ export const HAIR_COLOR = [
     'platinum blonde',
     'silvery gray',
     'salt & pepper',
-    'dark brown',
+    'chocolate brown',
     'copper',
     'golden',
 ];
@@ -424,6 +448,7 @@ export const EYE_COLORS = [
 ];
 
 export const DISTINGUISHING_FEATURES = [
+    'the golden filigree racing across their body',
     'the many candles that are stuck to their shoulders',
     'that they are covered in old scars',
     'their missing eye',
@@ -502,7 +527,7 @@ export const WINTER_DESCRIP = [
     'a blood red hourglass symbol along the back',
     'an extra set of chitinous scything arms',
     'a smaller, extra set of eyes',
-    'dark, chitious legs like thigh-high boots',
+    'dark, chitious leg armor like thigh-high boots',
 ];
 
 export const INFERNAL_DESCRIP = [
@@ -530,7 +555,7 @@ export const DIVINE_DESCRIP = [
     'seven, feathered wings',
     'wings sprouting from their temples that cover their eyes',
     'a soft, radiating light',
-    'feathers sproating from their hair',
+    'feathers sprouting from their hair',
     'eyes along their arms',
     'glinting celestial script carved along their body',
     'limbs that glow at the tips',
@@ -570,7 +595,7 @@ export const SNAKE_DESCRIP = [
     'a piebald scale pattern',
     'a tail that splits into two ends',
     'a tendency to ball up when comfortable',
-    'gives the best hugs'
+    'they give the best hugs'
 ];
 
 export const DRAGON_DESCRIP = [
@@ -634,6 +659,7 @@ export const LAMIA_DESCRIP = [
 ];
 
 export const FIRE_DESCRIP = [
+    'they smell like a campfire',
     'glows with a warm, inner flame',
     'sparks fly from their mouth whenever they laugh',
     'their voice pops and crackles like a fireplace',
@@ -649,7 +675,8 @@ export const WATER_DESCRIP = [
     'their forearms are frozen and carved to appear as icy gauntlets',
     'they can shift their features as easily as water flows around a stone',
     'their "hair" is actually water that shifts with their emotions',
-    'their voice booms like a crashing wave'
+    'their voice booms like a crashing wave',
+    'they smell like a fresh, sea breeze',
 ];
 
 export const AIR_DESCRIP = [
@@ -672,7 +699,8 @@ export const EARTH_DESCRIP = [
     'a scar that shimmers like a geode',
     'crystals sprouting along their shoulders and back',
     'the inside of their mouth glitters like treasure whenever they laughs',
-    'their hair splits light like a prism'
+    'their hair splits light like a prism',
+    'they smell like petrichor',
 ];
 
 export const FISH_DESCRIP = [
@@ -711,16 +739,16 @@ export const PLANT_DESCRIP = [
     'ancient elvish love poems carved all along their body',
     'poisonous flowers flow from their head like a cascade of hair',
     'delicately sweet smelling flowers bloom around them wherever they stand',
-    'fireflies meander out when the sun sets'
+    'fireflies meander out from their body when the sun sets'
 ];
 
 export const UNICORN_DESCRIP = [
-    'moves like a shadow across the sea',
-    'shimmers like sea foam in a certain light',
+    'move like a shadow across the sea',
+    'shimmer like sea foam in a certain light',
     'is the most beautiful and heart-wrenching thing you\'ve ever seen',
     'has a horn that shivers with a seashell light and can pierce even dragonhide',
-    'possess the oldest, wildest grace that horses never had, and that deer only have in a thin imitation',
-    'they reflect a distant forest, untouched by man and time',
+    'possesses the oldest, wildest grace that horses never had, and that deer only have in a thin imitation',
+    'those eyes reflect a distant forest, untouched by man and time',
     'a scar upon their forehead like a starburst',
     'faun-like cloven hooves with snow-white fur along the fetlocks'
 ];
@@ -796,4 +824,10 @@ export const KOBOLD_DESCRIP = [
     'sharp, tough claws',
     'a thick tail',
     'a detachable tail that regrows in 3-5 days',
+];
+
+export const RABBIT_DESCRIP = [
+    'lop-like ears that hang past their shoulders',
+    'tall, proud ears with small tufts of fur on the ends',
+    'a long, opposum-like tail that drags along the ground'
 ];
