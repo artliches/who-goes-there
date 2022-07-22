@@ -1,4 +1,8 @@
 export const NAMES = [
+    'Whitney',
+    'Erika',
+    'Lance',
+    'Ripley',
     'Coheed',
     'Cambria',
     'Vaxis',
@@ -86,6 +90,7 @@ export const NAMES = [
     'Ellis',
     'Falak',
     'Marshall',
+    'Faragar',
     'Pelle',
     'Gaur',
     'Dutch',
@@ -118,7 +123,10 @@ export const NAMES = [
     'Quinn',
     'Ein',
     'Luna',
-    'Lemillion'
+    'Lemillion',
+    'Matrakin',
+    'Zandakar',
+    'Leviathan',
 ];
 
 export const MAIN_PRONOUN = [
@@ -369,16 +377,6 @@ export const SKIN_FUR = [
     'snowy white',
     'charcoal black',
     'deep navy blue'
-];
-
-export const SKIN_FEATHERS = [
-    'peacock',
-    'seagull',
-    'raven',
-    'parrot',
-    'dove',
-    'pigeon',
-    'bird-of-paradise'
 ];
 
 export const SKIN_MARINE = [
@@ -830,4 +828,15 @@ export const RABBIT_DESCRIP = [
     'lop-like ears that hang past their shoulders',
     'tall, proud ears with small tufts of fur on the ends',
     'a long, opposum-like tail that drags along the ground'
+];
+
+export const FEATHERS_DESCRIP = [
+    'iridescent peacock plumage, complete with long, fan-like tail feathers',
+    'stark white seagull plumage, with jet black feathers at the tips of their wings',
+    'oily black raven plumage and a sharp, intelligent look to their eye',
+    'rainbow parrot plumage, with colors that blend seamlessly into the next',
+    'golden eagle plumage, complete with shiny black talons that curve like scimitars',
+    'alabaster white albatross plumage, with wings three times as long as their body',
+    'tawny owl plumage, with expressive plumicorns that shift with their mood',
+    'deep blue and white spotted peregrine plumage, with wings tucked tight to their sleek body',
 ];
