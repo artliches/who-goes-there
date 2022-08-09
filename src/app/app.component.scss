@@ -21,7 +21,8 @@ strong {
 h1 {
     place-self: center;
     margin-bottom: 0rem;
-    color: black
+    color: black;
+    font-family: "Gabriela-Regular", "Roboto Mono", sans-serif;
 }
 
 em {
@@ -75,5 +76,9 @@ em {
     .npc-gen-grid {
         max-width: 53%;
         margin: auto;
+
+        h1 {
+            font-size: 3rem;
+        }
     }
 }

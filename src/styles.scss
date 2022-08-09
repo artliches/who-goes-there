@@ -4,6 +4,12 @@
     font-weight: 100 1000;
 }
 
+@font-face {
+    font-family: "Gabriela-Regular";
+    src: local("Gabriela-Regular"), url(./assets/fonts/Gabriela-Regular.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
 body {
     background-color: #fff4e4;
     color: black;
