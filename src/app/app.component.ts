@@ -94,6 +94,7 @@ export class AppComponent implements OnInit {
   previousSpeciesHairless: boolean = false;
 
   clipBoard = '';
+  copied = false;
 
   @ViewChild('introduction') introduction: any;
   @ViewChild('mainDescription') mainDescription: any;
@@ -114,6 +115,7 @@ export class AppComponent implements OnInit {
         this.distinguishingFeatures.nativeElement.innerText;
 
         navigator.clipboard.writeText(this.clipBoard);
+        this.copied = true;
   }
 
   rollAll() {
