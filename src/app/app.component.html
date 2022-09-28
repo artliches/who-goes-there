@@ -9,7 +9,7 @@
     </span>
     
     <div #introduction>
-        You encounter <strong (click)="reRollName()">{{nameObj.descrip}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
+        You encounter <strong (click)="reRollName()">{{nameObj.descrip}}</strong> <strong (click)="reRollGorgonLifecycle()" *ngIf="speciesObj.species.name === 'Gorgon'">, {{gorgonTitle.lifeCycle.descrip}}</strong><strong (click)="reRollGorgonPosition()" *ngIf="speciesObj.species.name === 'Gorgon'"> {{gorgonTitle.position.descrip}}</strong> (<strong (click)="reRollMainPronoun()">{{pronounsObj.pronouns_main}}</strong>/<strong (click)="reRollSecondaryPronoun()">{{pronounsObj.pronouns_secondary}}</strong>).
     </div>
     <div #mainDescription>
         {{pronounsObj.pronouns_main}} {{pronounsObj.pronouns_main === 'They' ? 'are' : 'is'}} {{speciesStartsWithVowel ? 'an' : 'a'}} <strong (click)="reRollSpecies()">{{speciesObj.species.name}}</strong> with <strong (click)="reRollSkinTone()">{{this.skinObj.descrip}}</strong> {{skinAdjective}} and a <strong (click)="reRollBuild()">{{buildObj.descrip}}</strong> build.
@@ -36,6 +36,6 @@
 
     <span class="link">
         <strong class="copyButton" (click)="copyToClipboard()">{{copied ? 'copied!' : 'copy to clipboard?'}}</strong>
-        <span>WHO GOES THERE?v1.5 is created by <strong><a href='https://twitter.com/codeLiches' target="_blank">@codeLiches</a></strong></span>
+        <span>WHO GOES THERE?v1.6 is created by <strong><a href='https://twitter.com/codeLiches' target="_blank">@codeLiches</a></strong></span>
     </span>
 </span>

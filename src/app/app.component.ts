@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, } from '@angular/core';
-import { AIR_DESCRIP, AUTUMN_DESCRIP, BUILD, CANID_DESCRIP, CAT_DESCRIP, CENTAUR_DESCRIP, DISTINGUISHING_FEATURES, DIVINE_DESCRIP, DRAGON_DESCRIP, EARTH_DESCRIP, EYE_COLORS, FEATHERS_DESCRIP, FIRE_DESCRIP, FISH_DESCRIP, GOBLIN_DESCRIP, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, HEXBLOOD_DESCRIP, INFERNAL_DESCRIP, KOBOLD_DESCRIP, LAMIA_DESCRIP, LIZARD_DESCRIP, MAIN_PRONOUN, MEDUSA_DESCRIP, NAMES, PLANT_DESCRIP, RABBIT_DESCRIP, SECONDARY_PRONOUN, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SNAKE_DESCRIP, SPECIES, SPHINX_DESCRIP, SPRING_DESCRIP, SUMMER_DESCRIP, UNICORN_DESCRIP, WATER_DESCRIP, WINTER_DESCRIP } from 'src/assets/descrips.constants';
+import { AIR_DESCRIP, AUTUMN_DESCRIP, BUILD, CANID_DESCRIP, CAT_DESCRIP, CENTAUR_DESCRIP, DISTINGUISHING_FEATURES, DIVINE_DESCRIP, DRAGON_DESCRIP, EARTH_DESCRIP, EYE_COLORS, FEATHERS_DESCRIP, FIRE_DESCRIP, FISH_DESCRIP, GOBLIN_DESCRIP, GORGON_LIFECYCLE, GORGON_POSITION, HAIR_COLOR, HAIR_LENGTH, HAIR_TYPE, HEXBLOOD_DESCRIP, INFERNAL_DESCRIP, KOBOLD_DESCRIP, LAMIA_DESCRIP, LIZARD_DESCRIP, MAIN_PRONOUN, MEDUSA_DESCRIP, NAMES, PLANT_DESCRIP, RABBIT_DESCRIP, SECONDARY_PRONOUN, SKIN_FUR, SKIN_MARINE, SKIN_OUTSIDER, SKIN_TONE, SKIN_WOOD, SNAKE_DESCRIP, SPECIES, SPHINX_DESCRIP, SPRING_DESCRIP, SUMMER_DESCRIP, UNICORN_DESCRIP, WATER_DESCRIP, WINTER_DESCRIP } from 'src/assets/descrips.constants';
 import { RandomNumberService } from './_services/randomNumber.service';
 
 @Component({
@@ -69,6 +69,17 @@ export class AppComponent implements OnInit {
     prevRoll: -1
   };
 
+  gorgonTitle = {
+    lifeCycle: {
+      descrip: '',
+      prevRoll: -1
+    },
+    position: {
+      descrip: '',
+      prevRoll: -1
+    }
+  };
+
   skinAdjective = 'skin';
 
   speciesStartsWithVowel = false;
@@ -119,7 +130,6 @@ export class AppComponent implements OnInit {
   }
 
   rollAll() {
-    this.reRollName();
     this.reRollPronouns();
     this.getInitialSpecies();
     this.reRollSkinTone();
@@ -137,6 +147,29 @@ export class AppComponent implements OnInit {
 
   reRollName() {
     this.nameObj.descrip = this.getDescripFromArray(NAMES, this.nameObj);
+    if (this.speciesObj.species.name === 'Gorgon') {
+      this.reRollGorgonLifecycle();
+      this.reRollGorgonPosition();
+
+    } else if (this.gorgonTitle.lifeCycle.descrip.length > 0) {
+      this.gorgonTitle.lifeCycle.descrip = '';
+      this.gorgonTitle.position.descrip = '';
+
+      this.gorgonTitle.lifeCycle.prevRoll = -1;
+      this.gorgonTitle.position.prevRoll = -1;
+    }
+  }
+
+  reRollGorgonPosition() {
+    const positionLength = GORGON_POSITION.length - 1;
+    this.gorgonTitle.position.prevRoll = this.randNum.getRandomNumber(0, positionLength, this.gorgonTitle.position.prevRoll);
+    this.gorgonTitle.position.descrip = GORGON_POSITION[this.gorgonTitle.position.prevRoll];
+  }
+
+  reRollGorgonLifecycle() {
+    const lifeCycleLength = GORGON_LIFECYCLE.length - 1;
+    this.gorgonTitle.lifeCycle.prevRoll = this.randNum.getRandomNumber(0, lifeCycleLength, this.gorgonTitle.lifeCycle.prevRoll);
+    this.gorgonTitle.lifeCycle.descrip = GORGON_LIFECYCLE[this.gorgonTitle.lifeCycle.prevRoll];
   }
 
   reRollMainPronoun() {
@@ -184,6 +217,7 @@ export class AppComponent implements OnInit {
 
     this.noHair = this.noHairSpecies.includes(this.speciesObj.species.name);
     this.getSpecialSpeciesDescription();
+    this.reRollName();
   }
 
   private getSpecialSpeciesDescription() {
